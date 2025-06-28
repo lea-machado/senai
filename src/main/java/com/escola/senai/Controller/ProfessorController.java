@@ -1,48 +1,48 @@
 package com.escola.senai.Controller;
 
-import com.escola.senai.Model.Aluno;
-import com.escola.senai.Service.AlunoService;
+import com.escola.senai.Model.Professor;
+import com.escola.senai.Service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/alunos")
-public class AlunoController {
-    private final AlunoService service;
+@RequestMapping("/professores")
+public class ProfessorController {
+    private final ProfessorService service;
 
-    public AlunoController(AlunoService service) {
+    public ProfessorController(ProfessorService service) {
         this.service = service;
     }
 
     @GetMapping
-    public List<Aluno> listarAlunos(){
-        return service.listarTodosAlunos();
+    public List<Professor> listarProfessores(){
+        return service.listarTodosProfessores();
     }
 
     @PostMapping
-    public Aluno criarAluno(@RequestBody Aluno novoAluno){
-        return service.criarAluno(novoAluno);
+    public Professor criarProfessor(@RequestBody Professor novoProfessor){
+        return service.criarProfessor(novoProfessor);
     }
 
     @GetMapping("/{id}")
-    public Aluno buscarAluno(@PathVariable Long id){
+    public Professor buscarProfessor(@PathVariable Long id){
         return service.buscarPorId(id);
     }
 
     @PutMapping("/{id}")
-    public Aluno atualizarAluno(@PathVariable Long id, @RequestBody Aluno alunoAtualizado){
-        Aluno alunoExistente = service.buscarPorId(id);
-        if (alunoExistente == null) return null;
+    public Professor atualizarProfessor(@PathVariable Long id, @RequestBody Professor professorAtualizado){
+        Professor professorExistente = service.buscarPorId(id);
+        if (professorExistente == null) return null;
 
-        alunoExistente.setNome(alunoAtualizado.getNome());
-        alunoExistente.setEmail(alunoAtualizado.getEmail());
-        alunoExistente.setTelefone(alunoAtualizado.getTelefone());
-        return service.criarAluno(alunoExistente);
+        professorExistente.setNome(professorAtualizado.getNome());
+        professorExistente.setEmail(professorAtualizado.getEmail());
+        professorExistente.setTelefone(professorAtualizado.getTelefone());
+        return service.criarProfessor(professorExistente);
     }
 
     @DeleteMapping("/{id}")
-    public void deletarAluno(@PathVariable Long id){
-        service.deletarAluno(id);
+    public void deletarProfessor(@PathVariable Long id){
+        service.deletarProfessor(id);
     }
 }
