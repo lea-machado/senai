@@ -1,10 +1,11 @@
 :root {
-  --primary-color: #59b7af;
+  --primary-color: #e52e2e;
   --secondary-color: #f3f3f3;
-  --white-color: #ffffff;
+  --white-color: #ffffff96;
+  --white-text-color: #ffffff;
   --text-color: #333;
   --border-color: #ddd;
-  --hover-color: #8bd9d2;
+  --hover-color: #ed7b7b;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -47,7 +48,7 @@ table {
 
 thead {
   background-color: var(--primary-color);
-  color: var(--white-color);
+  color: var(--white-text-color);
 }
 
 th, td {
